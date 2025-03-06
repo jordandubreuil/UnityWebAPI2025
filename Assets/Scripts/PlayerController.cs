@@ -4,6 +4,7 @@ using Mirror;
 public class PlayerController : NetworkBehaviour
 {
     float speed = 5.0f;
+    public bool isFrozen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,6 +15,8 @@ public class PlayerController : NetworkBehaviour
     void Update()
     {
         if (!isLocalPlayer) return;
+        if (isFrozen) return;
+
 
         float moveX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float moveY = Input.GetAxis("Vertical") * speed * Time.deltaTime;

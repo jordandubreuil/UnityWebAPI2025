@@ -16,10 +16,12 @@ public class PlayerTag : NetworkBehaviour
             if(isIt && !otherPlayer.isFrozen)
             {
                 otherPlayer.FreezePlayer();
+                
             }
             else if (!isIt && isFrozen && !otherPlayer.isFrozen)
             {
                 UnFreezePlayer();
+               
             }
         }
 
@@ -45,5 +47,6 @@ public class PlayerTag : NetworkBehaviour
     {
         isFrozen = frozen;
         GetComponent<Renderer>().material.color = frozen ? Color.blue : Color.gray;
+        GetComponent<PlayerController>().isFrozen = frozen;
     }
 }
